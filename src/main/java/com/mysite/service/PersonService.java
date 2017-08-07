@@ -1,30 +1,28 @@
 package com.mysite.service;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mysite.model.person;
+import com.mysite.repo.prepo;
 
 @Service
 public class PersonService {
-	 List<person> list = new ArrayList<person>();
+	@Autowired
+	prepo pr;
 	    
 	
 
-	public List<person> getmymethod(){
+	public Iterable<person> getmymethod(){
 		
-     
-     return list;
+	     
+	     return pr.findAll();
+	}
+		
+		public void putmymethod(person g){
+			pr.save(g);
+	 }
 
-
-}
-	
-	
-	
-	public void putmymethod(person p){
-		list.add(p);
- }
-
- 
-}
+	 
+	}
