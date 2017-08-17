@@ -8,6 +8,6 @@ import com.mysite.model.person;
 public interface prepo extends MongoRepository<person, String> {
 
 //    public person findByFirstName(String firstName);
-//    public List<person> findByLastName(String lastName);
+// public List<person> findByLastName(String lastName);
 
 }

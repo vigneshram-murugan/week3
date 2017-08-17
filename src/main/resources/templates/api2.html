@@ -35,6 +35,13 @@
 					<li><a href="/apipr">api3</a></li>
 					<li><a href="/api3">api4</a></li>
 				</ul>
+				<div class="navbar-text navbar-right">
+			            
+				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+				    	Welcome  | <span sec:authentication="name"></span>
+				    	<a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Logout</a>
+				    	</form>
+				    </div>
 			</div>
 		</div>
 	</nav>

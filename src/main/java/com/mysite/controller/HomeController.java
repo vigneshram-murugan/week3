@@ -12,14 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.mysite.model.Greeting;
 import com.mysite.model.person;
+import com.mysite.repo.Grepo;
+import com.mysite.repo.prepo;
 import com.mysite.service.GreetingService;
 import com.mysite.service.PersonService;
 
@@ -37,7 +41,10 @@ public class HomeController {
 		this.p = p;
 		return p;
 	}
-	
+	@Autowired
+	prepo pr2;
+	@Autowired
+	Grepo gp;
 	
 	@Autowired
 	GreetingService g;
@@ -86,6 +93,15 @@ public class HomeController {
 		model.addAttribute("greetings", g.getmymethod());
 		return "api2";
 	}
+	
+	@RequestMapping(value = "/apiget/{id}")@ResponseBody
+	public Greeting api_fn3(@PathVariable("id") int id) {
+		System.out.println("********************api for one respond get******************");
+		
+		return gp.findOne((long) id);
+		
+	}
+	
 
 	 @GetMapping("/apipr")
 	    public String perForm(Model model) {
